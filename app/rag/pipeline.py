@@ -116,6 +116,7 @@ class FinSenseRAG:
         lightweight = os.getenv("LIGHTWEIGHT_MODE", "false").lower() == "true"
 
         if lightweight:
+            print("  LIGHTWEIGHT_MODE=true: skipping sentence-transformers, using TF-IDF fallback.")
             st_embedder, st_reranker = None, None
         else:
             st_embedder, st_reranker = _load_sentence_transformers(embedding_model, reranker_model)
