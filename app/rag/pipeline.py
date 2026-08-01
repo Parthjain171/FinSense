@@ -23,7 +23,12 @@ from app.rag.chunker import chunk_invoice, chunk_financial_statement
 
 
 def _load_sentence_transformers(embedding_model, reranker_model):
-    """Try to load sentence-transformers models. Returns None if unavailable."""
+    """Try to load sentence-transformers models. Returns None if unavailable.
+    Set USE_TFIDF=true in env to skip loading entirely (e.g. Render free tier).
+    """
+    if os.getenv("USE_TFIDF", "").lower() in ("1", "true", "yes"):
+        print("  USE_TFIDF=true: skipping sentence-transformers, using TF-IDF fallback.")
+        return None, None
     try:
         from sentence_transformers import SentenceTransformer, CrossEncoder
         embedder = SentenceTransformer(embedding_model)
@@ -108,7 +113,12 @@ class FinSenseRAG:
         index_path: str = None,
     ):
         print("Loading embedding model...")
-        st_embedder, st_reranker = _load_sentence_transformers(embedding_model, reranker_model)
+        lightweight = os.getenv("LIGHTWEIGHT_MODE", "false").lower() == "true"
+
+        if lightweight:
+            st_embedder, st_reranker = None, None
+        else:
+            st_embedder, st_reranker = _load_sentence_transformers(embedding_model, reranker_model)
 
         if st_embedder:
             self.embedder = st_embedder
