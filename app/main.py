@@ -10,8 +10,11 @@ Start with: uvicorn app.main:app --reload
 import os
 import time
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from typing import Optional
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.rag.pipeline import FinSenseRAG
 from app.agents.invoice_agent import InvoiceAgent
@@ -25,6 +28,14 @@ app = FastAPI(
         "drafts professional client replies. Built for airCFO."
     ),
     version="1.0.0",
+)
+
+# Allow frontend to call API
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Global instances (initialized on startup)
@@ -69,6 +80,26 @@ async def startup():
 
 @app.get("/")
 async def root():
+    """Serve the landing page."""
+    static_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static", "index.html")
+    if os.path.exists(static_path):
+        return FileResponse(static_path, media_type="text/html")
+    return {
+        "service": "FinSense",
+        "version": "1.0.0",
+        "description": "AI invoice and financial document agent for airCFO",
+        "endpoints": {
+            "/ask": "POST - Ask any question about invoices or financials",
+            "/search": "POST - Raw document search",
+            "/health": "GET - Health check",
+            "/tools": "GET - List available MCP tools",
+        },
+    }
+
+
+@app.get("/api")
+async def api_info():
+    """API info endpoint (JSON)."""
     return {
         "service": "FinSense",
         "version": "1.0.0",
