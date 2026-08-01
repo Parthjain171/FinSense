@@ -1,0 +1,314 @@
+[
+  {
+    "filename": "INV-2026-0001_NovaByte_January_2026.pdf",
+    "client": "NovaByte",
+    "month": "January",
+    "year": 2026,
+    "total": 5000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "January 2026",
+        5000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0002_NovaByte_February_2026.pdf",
+    "client": "NovaByte",
+    "month": "February",
+    "year": 2026,
+    "total": 5000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "February 2026",
+        5000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0003_NovaByte_March_2026.pdf",
+    "client": "NovaByte",
+    "month": "March",
+    "year": 2026,
+    "total": 7500,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "March 2026",
+        5000
+      ],
+      [
+        "Tax Preparation (Q1 Filing)",
+        "March 2026",
+        2500
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0004_NovaByte_April_2026.pdf",
+    "client": "NovaByte",
+    "month": "April",
+    "year": 2026,
+    "total": 5000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "April 2026",
+        5000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0005_NovaByte_May_2026.pdf",
+    "client": "NovaByte",
+    "month": "May",
+    "year": 2026,
+    "total": 8000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "May 2026",
+        5000
+      ],
+      [
+        "Series A Financial Model Buildout",
+        "May 2026",
+        3000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0006_NovaByte_June_2026.pdf",
+    "client": "NovaByte",
+    "month": "June",
+    "year": 2026,
+    "total": 5000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "June 2026",
+        5000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0007_GreenThread_January_2026.pdf",
+    "client": "GreenThread",
+    "month": "January",
+    "year": 2026,
+    "total": 12000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "January 2026",
+        8000
+      ],
+      [
+        "Finance Advisory",
+        "January 2026",
+        4000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0008_GreenThread_February_2026.pdf",
+    "client": "GreenThread",
+    "month": "February",
+    "year": 2026,
+    "total": 18000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "February 2026",
+        8000
+      ],
+      [
+        "Finance Advisory",
+        "February 2026",
+        4000
+      ],
+      [
+        "Audit Preparation (Annual)",
+        "February 2026",
+        6000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0009_GreenThread_March_2026.pdf",
+    "client": "GreenThread",
+    "month": "March",
+    "year": 2026,
+    "total": 12000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "March 2026",
+        8000
+      ],
+      [
+        "Finance Advisory",
+        "March 2026",
+        4000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0010_GreenThread_April_2026.pdf",
+    "client": "GreenThread",
+    "month": "April",
+    "year": 2026,
+    "total": 15500,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "April 2026",
+        8000
+      ],
+      [
+        "Finance Advisory",
+        "April 2026",
+        4000
+      ],
+      [
+        "409A Valuation Support",
+        "April 2026",
+        3500
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0011_GreenThread_May_2026.pdf",
+    "client": "GreenThread",
+    "month": "May",
+    "year": 2026,
+    "total": 12000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "May 2026",
+        8000
+      ],
+      [
+        "Finance Advisory",
+        "May 2026",
+        4000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0012_GreenThread_June_2026.pdf",
+    "client": "GreenThread",
+    "month": "June",
+    "year": 2026,
+    "total": 12000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "June 2026",
+        8000
+      ],
+      [
+        "Finance Advisory",
+        "June 2026",
+        4000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0013_PulseMetrics_January_2026.pdf",
+    "client": "PulseMetrics",
+    "month": "January",
+    "year": 2026,
+    "total": 3000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "January 2026",
+        3000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0014_PulseMetrics_February_2026.pdf",
+    "client": "PulseMetrics",
+    "month": "February",
+    "year": 2026,
+    "total": 3000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "February 2026",
+        3000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0015_PulseMetrics_March_2026.pdf",
+    "client": "PulseMetrics",
+    "month": "March",
+    "year": 2026,
+    "total": 5000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "March 2026",
+        3000
+      ],
+      [
+        "People Operations Setup",
+        "March 2026",
+        2000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0016_PulseMetrics_April_2026.pdf",
+    "client": "PulseMetrics",
+    "month": "April",
+    "year": 2026,
+    "total": 3000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "April 2026",
+        3000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0017_PulseMetrics_May_2026.pdf",
+    "client": "PulseMetrics",
+    "month": "May",
+    "year": 2026,
+    "total": 3000,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "May 2026",
+        3000
+      ]
+    ]
+  },
+  {
+    "filename": "INV-2026-0018_PulseMetrics_June_2026.pdf",
+    "client": "PulseMetrics",
+    "month": "June",
+    "year": 2026,
+    "total": 2500,
+    "line_items": [
+      [
+        "Monthly Accounting",
+        "June 2026",
+        3000
+      ],
+      [
+        "Scope Reduction Adjustment",
+        "June 2026",
+        -500
+      ]
+    ]
+  }
+]

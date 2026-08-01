@@ -1,0 +1,108 @@
+[
+  {
+    "id": "q01",
+    "question": "Can you explain the $12,500 charge on GreenThread's February invoice?",
+    "expected_client": "GreenThread",
+    "expected_month": "February",
+    "expected_docs": [
+      "INV-2026-0008_GreenThread_February_2026.pdf"
+    ],
+    "type": "invoice_explanation"
+  },
+  {
+    "id": "q02",
+    "question": "Why is NovaByte's March invoice higher than February?",
+    "expected_client": "NovaByte",
+    "expected_month": "March",
+    "expected_docs": [
+      "INV-2026-0003_NovaByte_March_2026.pdf",
+      "INV-2026-0002_NovaByte_February_2026.pdf"
+    ],
+    "type": "invoice_comparison"
+  },
+  {
+    "id": "q03",
+    "question": "What services are included in PulseMetrics monthly retainer?",
+    "expected_client": "PulseMetrics",
+    "expected_docs": [],
+    "type": "service_inquiry"
+  },
+  {
+    "id": "q04",
+    "question": "Break down the line items on GreenThread's April invoice",
+    "expected_client": "GreenThread",
+    "expected_month": "April",
+    "type": "invoice_breakdown"
+  },
+  {
+    "id": "q05",
+    "question": "What was NovaByte's burn rate in Q1 vs Q2?",
+    "expected_client": "NovaByte",
+    "type": "metric_calculation"
+  },
+  {
+    "id": "q06",
+    "question": "How much runway does PulseMetrics have at current burn?",
+    "expected_client": "PulseMetrics",
+    "type": "metric_calculation"
+  },
+  {
+    "id": "q07",
+    "question": "Flag anything unusual in NovaByte's March expenses",
+    "expected_client": "NovaByte",
+    "expected_month": "March",
+    "type": "anomaly_detection"
+  },
+  {
+    "id": "q08",
+    "question": "Generate a month-end summary for GreenThread for April 2026",
+    "expected_client": "GreenThread",
+    "expected_month": "April",
+    "type": "month_end_analysis"
+  },
+  {
+    "id": "q09",
+    "question": "Compare GreenThread's Q1 vs Q2 revenue performance",
+    "expected_client": "GreenThread",
+    "type": "period_comparison"
+  },
+  {
+    "id": "q10",
+    "question": "How much did NovaByte spend on contractors in February?",
+    "expected_client": "NovaByte",
+    "expected_month": "February",
+    "type": "specific_lookup"
+  },
+  {
+    "id": "q11",
+    "question": "What is GreenThread's gross margin trend over the last 6 months?",
+    "expected_client": "GreenThread",
+    "type": "trend_analysis"
+  },
+  {
+    "id": "q12",
+    "question": "Draft a reply to NovaByte asking why their May invoice includes a $3,000 charge they did not expect",
+    "expected_client": "NovaByte",
+    "expected_month": "May",
+    "type": "draft_reply"
+  },
+  {
+    "id": "q13",
+    "question": "What was PulseMetrics total spend with airCFO in Q1 2026?",
+    "expected_client": "PulseMetrics",
+    "type": "total_spend"
+  },
+  {
+    "id": "q14",
+    "question": "PulseMetrics says they were charged for PeopleOps in March but did not sign up for it. Can you check?",
+    "expected_client": "PulseMetrics",
+    "expected_month": "March",
+    "type": "dispute_check"
+  },
+  {
+    "id": "q15",
+    "question": "Pull up the latest invoice for each of our three clients",
+    "expected_client": "all",
+    "type": "multi_client_lookup"
+  }
+]
