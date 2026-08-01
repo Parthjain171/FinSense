@@ -4,9 +4,14 @@ services:
   finsense:
     build: .
     ports:
-      - "8000:8000"
+      - "${PORT:-8000}:${PORT:-8000}"
     environment:
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - LLM_PROVIDER=${LLM_PROVIDER:-groq}
+      - LIGHTWEIGHT_MODE=${LIGHTWEIGHT_MODE:-true}
+      - PORT=${PORT:-8000}
     volumes:
       - ./data:/app/data
     restart: unless-stopped
