@@ -4,8 +4,10 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-# Install all deps EXCEPT sentence-transformers/torch (too heavy for free tier).
-# Set USE_TFIDF=true on Render to use the lightweight TF-IDF fallback instead.
+# Slim install: sentence-transformers/torch (~2 GB) excluded.
+# Set LIGHTWEIGHT_MODE=true (default) to use TF-IDF fallback on free-tier hosts.
+ENV LIGHTWEIGHT_MODE=true
+
 RUN pip install --no-cache-dir \
     fastapi==0.115.0 \
     uvicorn==0.30.0 \
@@ -22,8 +24,8 @@ RUN pip install --no-cache-dir \
     "groq>=0.9.0" \
     "scikit-learn>=1.5.0"
 
-# sentence-transformers (optional, requires torch ~2GB — skip on free tier)
-# To enable: set USE_TFIDF=false and uncomment the line below
+# sentence-transformers (optional, requires torch ~2 GB — skip on free tier)
+# To enable full embeddings: set LIGHTWEIGHT_MODE=false and uncomment below
 # RUN pip install --no-cache-dir "sentence-transformers>=3.0.0"
 
 COPY . .
