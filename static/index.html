@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,58 +7,197 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
         :root {
-            --bg-primary: #09090b; --bg-card: #111113; --bg-card-hover: #18181b;
-            --border: #27272a; --text-primary: #fafafa; --text-secondary: #a1a1aa;
-            --text-muted: #71717a; --accent: #a3e635; --accent-dim: #65a30d;
-            --accent-glow: rgba(163, 230, 53, 0.15); --red: #ef4444; --green: #22c55e;
-            --blue: #3b82f6; --font-body: 'Inter', -apple-system, sans-serif;
+            --bg-primary: #09090b;
+            --bg-card: #111113;
+            --bg-card-hover: #18181b;
+            --border: #27272a;
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent: #a3e635;
+            --accent-dim: #65a30d;
+            --accent-glow: rgba(163, 230, 53, 0.15);
+            --red: #ef4444;
+            --green: #22c55e;
+            --blue: #3b82f6;
+            --font-body: 'Inter', -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
+
         html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        @keyframes spin { to { transform: rotate(360deg); } }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ---- Animations ---- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .animate-up { animation: fadeUp 0.7s ease-out forwards; opacity: 0; }
-        .animate-up-d1 { animation-delay: 0.1s; } .animate-up-d2 { animation-delay: 0.2s; }
-        .animate-up-d3 { animation-delay: 0.3s; } .animate-up-d4 { animation-delay: 0.4s; }
+        .animate-up-d1 { animation-delay: 0.1s; }
+        .animate-up-d2 { animation-delay: 0.2s; }
+        .animate-up-d3 { animation-delay: 0.3s; }
+        .animate-up-d4 { animation-delay: 0.4s; }
+        .animate-up-d5 { animation-delay: 0.5s; }
+        .animate-up-d6 { animation-delay: 0.6s; }
+
+        /* ---- Layout ---- */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(9,9,11,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); animation: fadeIn 0.5s ease-out; }
-        nav .container { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-        .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--text-primary); }
-        .logo-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: var(--bg-primary); }
+
+        /* ---- Nav ---- */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            animation: fadeIn 0.5s ease-out;
+        }
+        nav .container {
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px;
+        }
+        .logo {
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--text-primary);
+        }
+        .logo-icon {
+            width: 32px; height: 32px; background: var(--accent);
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 900; color: var(--bg-primary);
+        }
         .nav-links { display: flex; gap: 32px; list-style: none; }
-        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
+        }
         .nav-links a:hover { color: var(--text-primary); }
-        .nav-cta { background: var(--accent); color: var(--bg-primary); padding: 8px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; transition: all 0.2s; }
+        .nav-cta {
+            background: var(--accent); color: var(--bg-primary); padding: 8px 20px;
+            border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600;
+            transition: all 0.2s; border: none; cursor: pointer;
+        }
         .nav-cta:hover { background: #bef264; transform: translateY(-1px); }
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); filter: blur(80px); pointer-events: none; }
+
+        /* ---- Hero ---- */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 120px 0 80px; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -200px; right: -200px;
+            width: 600px; height: 600px; border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            filter: blur(80px); pointer-events: none;
+        }
         .hero-content { position: relative; z-index: 1; max-width: 800px; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-card); border: 1px solid var(--border); padding: 6px 16px; border-radius: 100px; font-size: 13px; color: var(--text-secondary); margin-bottom: 32px; }
-        .hero-badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
-        .hero h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px; }
-        .hero h1 .accent { background: linear-gradient(135deg, var(--accent), #86efac); background-size: 200% 200%; animation: gradientShift 3s ease infinite; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero p { font-size: 1.15rem; color: var(--text-secondary); max-width: 560px; margin-bottom: 40px; line-height: 1.7; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--bg-card); border: 1px solid var(--border);
+            padding: 6px 16px; border-radius: 100px; font-size: 13px;
+            color: var(--text-secondary); margin-bottom: 32px;
+        }
+        .hero-badge-dot {
+            width: 6px; height: 6px; background: var(--accent);
+            border-radius: 50%; animation: pulse 2s infinite;
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 900;
+            line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px;
+        }
+        .hero h1 .accent {
+            background: linear-gradient(135deg, var(--accent), #86efac);
+            background-size: 200% 200%; animation: gradientShift 3s ease infinite;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem; color: var(--text-secondary);
+            max-width: 560px; margin-bottom: 40px; line-height: 1.7;
+        }
         .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-        .btn-primary { background: var(--accent); color: var(--bg-primary); padding: 14px 32px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 700; transition: all 0.25s; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-primary {
+            background: var(--accent); color: var(--bg-primary); padding: 14px 32px;
+            border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 700;
+            transition: all 0.25s; border: none; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
         .btn-primary:hover { background: #bef264; transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
-        .btn-secondary { background: transparent; color: var(--text-primary); padding: 14px 32px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 600; transition: all 0.25s; border: 1px solid var(--border); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-secondary {
+            background: transparent; color: var(--text-primary); padding: 14px 32px;
+            border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 600;
+            transition: all 0.25s; border: 1px solid var(--border); cursor: pointer;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
         .btn-secondary:hover { border-color: var(--text-muted); background: var(--bg-card); }
-        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-radius: 16px; overflow: hidden; margin: 80px 0; }
-        .stat { background: var(--bg-card); padding: 32px 24px; text-align: center; transition: background 0.2s; }
+
+        /* ---- Stats Bar ---- */
+        .stats {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 1px; background: var(--border); border-radius: 16px;
+            overflow: hidden; margin: 80px 0;
+        }
+        .stat {
+            background: var(--bg-card); padding: 32px 24px; text-align: center;
+            transition: background 0.2s;
+        }
         .stat:hover { background: var(--bg-card-hover); }
         .stat-value { font-size: 2rem; font-weight: 800; color: var(--accent); margin-bottom: 4px; }
         .stat-label { font-size: 13px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* ---- Problem/Solution ---- */
         .problem-section { padding: 80px 0; }
-        .section-label { font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
-        .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+        .section-label {
+            font-size: 13px; font-weight: 600; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
+            line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px;
+        }
         .section-desc { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7; margin-bottom: 48px; }
+
         .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .comparison-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 36px; transition: all 0.3s; }
+        .comparison-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 36px; transition: all 0.3s;
+        }
         .comparison-card:hover { border-color: var(--text-muted); transform: translateY(-2px); }
         .comparison-card.before { border-left: 3px solid var(--red); }
         .comparison-card.after { border-left: 3px solid var(--accent); }
@@ -69,62 +208,164 @@
         .comparison-card ul { list-style: none; }
         .comparison-card li { padding: 8px 0; color: var(--text-secondary); font-size: 14px; border-bottom: 1px solid var(--border); }
         .comparison-card li:last-child { border: none; }
+
+        /* ---- Live Demo ---- */
         .demo-section { padding: 80px 0; }
-        .demo-container { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
-        .demo-header { display: flex; align-items: center; gap: 8px; padding: 16px 24px; border-bottom: 1px solid var(--border); background: var(--bg-primary); }
+        .demo-container {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 20px; overflow: hidden;
+        }
+        .demo-header {
+            display: flex; align-items: center; gap: 8px;
+            padding: 16px 24px; border-bottom: 1px solid var(--border);
+            background: var(--bg-primary);
+        }
         .demo-dot { width: 12px; height: 12px; border-radius: 50%; }
-        .demo-dot.r { background: #ef4444; } .demo-dot.y { background: #eab308; } .demo-dot.g { background: #22c55e; }
-        .demo-url { flex: 1; text-align: center; font-size: 13px; color: var(--text-muted); font-family: var(--font-mono); }
+        .demo-dot.r { background: #ef4444; }
+        .demo-dot.y { background: #eab308; }
+        .demo-dot.g { background: #22c55e; }
+        .demo-url {
+            flex: 1; text-align: center; font-size: 13px;
+            color: var(--text-muted); font-family: var(--font-mono);
+        }
         .demo-body { padding: 32px; }
         .demo-input-row { display: flex; gap: 12px; margin-bottom: 24px; }
-        .demo-input { flex: 1; background: var(--bg-primary); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; color: var(--text-primary); font-size: 14px; font-family: var(--font-body); outline: none; transition: border-color 0.2s; }
+        .demo-input {
+            flex: 1; background: var(--bg-primary); border: 1px solid var(--border);
+            border-radius: 10px; padding: 14px 18px; color: var(--text-primary);
+            font-size: 14px; font-family: var(--font-body); outline: none;
+            transition: border-color 0.2s;
+        }
         .demo-input:focus { border-color: var(--accent); }
         .demo-input::placeholder { color: var(--text-muted); }
-        .demo-submit { background: var(--accent); color: var(--bg-primary); padding: 14px 24px; border-radius: 10px; border: none; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .demo-submit {
+            background: var(--accent); color: var(--bg-primary); padding: 14px 24px;
+            border-radius: 10px; border: none; font-size: 14px; font-weight: 700;
+            cursor: pointer; transition: all 0.2s; white-space: nowrap;
+        }
         .demo-submit:hover { background: #bef264; }
         .demo-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
         .demo-queries { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-        .demo-query-btn { background: var(--bg-primary); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; color: var(--text-secondary); font-size: 12px; cursor: pointer; transition: all 0.2s; font-family: var(--font-mono); }
+        .demo-query-btn {
+            background: var(--bg-primary); border: 1px solid var(--border);
+            border-radius: 8px; padding: 8px 14px; color: var(--text-secondary);
+            font-size: 12px; cursor: pointer; transition: all 0.2s;
+            font-family: var(--font-mono);
+        }
         .demo-query-btn:hover { border-color: var(--accent); color: var(--accent); }
-        .demo-result { background: var(--bg-primary); border: 1px solid var(--border); border-radius: 12px; padding: 24px; min-height: 120px; font-family: var(--font-mono); font-size: 13px; line-height: 1.8; color: var(--text-secondary); white-space: pre-wrap; word-break: break-word; max-height: 400px; overflow-y: auto; }
+
+        .demo-result {
+            background: var(--bg-primary); border: 1px solid var(--border);
+            border-radius: 12px; padding: 24px; min-height: 120px;
+            font-family: var(--font-mono); font-size: 13px;
+            line-height: 1.8; color: var(--text-secondary);
+            white-space: pre-wrap; word-break: break-word;
+            max-height: 400px; overflow-y: auto;
+        }
         .demo-result .label { color: var(--accent); font-weight: 600; }
         .demo-result .value { color: var(--text-primary); }
-        .demo-meta { display: flex; gap: 16px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
-        .demo-meta span { font-size: 12px; color: var(--text-muted); font-family: var(--font-mono); }
+        .demo-meta {
+            display: flex; gap: 16px; margin-top: 16px;
+            padding-top: 16px; border-top: 1px solid var(--border);
+        }
+        .demo-meta span {
+            font-size: 12px; color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
         .demo-meta .fast { color: var(--accent); }
+
+        /* ---- Tools/Features ---- */
         .tools-section { padding: 80px 0; }
         .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        .tool-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: all 0.3s; position: relative; overflow: hidden; }
+        .tool-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 28px; transition: all 0.3s;
+            position: relative; overflow: hidden;
+        }
         .tool-card:hover { border-color: var(--accent); transform: translateY(-3px); }
         .tool-card:hover .tool-icon { background: var(--accent); color: var(--bg-primary); }
-        .tool-icon { width: 44px; height: 44px; background: var(--bg-primary); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 16px; transition: all 0.3s; }
+        .tool-icon {
+            width: 44px; height: 44px; background: var(--bg-primary);
+            border: 1px solid var(--border); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; margin-bottom: 16px; transition: all 0.3s;
+        }
         .tool-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; font-family: var(--font-mono); }
         .tool-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+        /* ---- Architecture ---- */
         .arch-section { padding: 80px 0; }
-        .arch-flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; padding: 48px 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; }
-        .arch-node { background: var(--bg-primary); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; text-align: center; min-width: 140px; transition: all 0.3s; }
+        .arch-flow {
+            display: flex; align-items: center; justify-content: center;
+            gap: 12px; flex-wrap: wrap; padding: 48px 24px;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+        .arch-node {
+            background: var(--bg-primary); border: 1px solid var(--border);
+            border-radius: 10px; padding: 16px 20px; text-align: center;
+            min-width: 140px; transition: all 0.3s;
+        }
         .arch-node:hover { border-color: var(--accent); transform: translateY(-2px); }
         .arch-node.highlight { border-color: var(--accent); background: var(--accent-glow); }
         .arch-node-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
         .arch-node-value { font-size: 14px; font-weight: 700; font-family: var(--font-mono); }
         .arch-arrow { color: var(--text-muted); font-size: 20px; }
+
+        /* ---- Tech Stack ---- */
         .stack-section { padding: 80px 0; }
         .stack-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .stack-tag { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 18px; font-size: 13px; font-family: var(--font-mono); font-weight: 500; color: var(--text-secondary); transition: all 0.2s; }
+        .stack-tag {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 8px; padding: 10px 18px; font-size: 13px;
+            font-family: var(--font-mono); font-weight: 500;
+            color: var(--text-secondary); transition: all 0.2s;
+        }
         .stack-tag:hover { border-color: var(--accent); color: var(--accent); }
-        footer { padding: 48px 0; border-top: 1px solid var(--border); text-align: center; margin-top: 40px; }
+
+        /* ---- Footer ---- */
+        footer {
+            padding: 48px 0; border-top: 1px solid var(--border);
+            text-align: center; margin-top: 40px;
+        }
         footer p { font-size: 14px; color: var(--text-muted); }
         footer a { color: var(--accent); text-decoration: none; }
         footer a:hover { text-decoration: underline; }
-        @media (max-width: 768px) { .comparison-grid { grid-template-columns: 1fr; } .tools-grid { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, 1fr); } .nav-links { display: none; } .arch-flow { flex-direction: column; } .arch-arrow { transform: rotate(90deg); } }
-        ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg-primary); } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; } ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
-        .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid var(--bg-primary); border-top-color: transparent; border-radius: 50%; animation: spin 0.6s linear infinite; }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 768px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+            .tools-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+            .arch-flow { flex-direction: column; }
+            .arch-arrow { transform: rotate(90deg); }
+        }
+
+        /* ---- Scrollbar ---- */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        /* ---- Loading Spinner ---- */
+        .spinner {
+            display: inline-block; width: 16px; height: 16px;
+            border: 2px solid var(--bg-primary); border-top-color: transparent;
+            border-radius: 50%; animation: spin 0.6s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
+    <!-- Nav -->
     <nav>
         <div class="container">
-            <a href="#" class="logo"><div class="logo-icon">FS</div>FinSense</a>
+            <a href="#" class="logo">
+                <div class="logo-icon">FS</div>
+                FinSense
+            </a>
             <ul class="nav-links">
                 <li><a href="#demo">Live Demo</a></li>
                 <li><a href="#tools">Tools</a></li>
@@ -135,34 +376,75 @@
         </div>
     </nav>
 
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge animate-up"><span class="hero-badge-dot"></span>Built for airCFO's founding engineer role</div>
-                <h1 class="animate-up animate-up-d1">Invoice questions answered in<br><span class="accent">seconds, not hours.</span></h1>
-                <p class="animate-up animate-up-d2">FinSense is an AI agent that reads inbound invoice questions, retrieves the correct document, and drafts a context-aware reply your team can review and send. 6 MCP tools. Sub-10ms latency on financial calculations. Zero hallucinated numbers.</p>
+                <div class="hero-badge animate-up">
+                    <span class="hero-badge-dot"></span>
+                    Built for airCFO's founding engineer role
+                </div>
+                <h1 class="animate-up animate-up-d1">
+                    Invoice questions answered in<br>
+                    <span class="accent">seconds, not hours.</span>
+                </h1>
+                <p class="animate-up animate-up-d2">
+                    FinSense is an AI agent that reads inbound invoice questions,
+                    retrieves the correct document, and drafts a context-aware reply
+                    your team can review and send. 6 MCP tools. Sub-10ms latency on
+                    financial calculations. Zero hallucinated numbers.
+                </p>
                 <div class="hero-buttons animate-up animate-up-d3">
-                    <a href="#demo" class="btn-primary">Try live demo &#8595;</a>
-                    <a href="https://github.com/Parthjain171/FinSense" target="_blank" class="btn-secondary">View source &#8599;</a>
+                    <a href="#demo" class="btn-primary">Try live demo &darr;</a>
+                    <a href="https://github.com/Parthjain171/FinSense" target="_blank" class="btn-secondary">View source &nearr;</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Stats -->
     <div class="container">
         <div class="stats">
-            <div class="stat animate-up animate-up-d1"><div class="stat-value">84</div><div class="stat-label">Documents Indexed</div></div>
-            <div class="stat animate-up animate-up-d2"><div class="stat-value">&lt;5ms</div><div class="stat-label">Calculation Latency</div></div>
-            <div class="stat animate-up animate-up-d3"><div class="stat-value">6</div><div class="stat-label">MCP Tools</div></div>
-            <div class="stat animate-up animate-up-d4"><div class="stat-value">$0</div><div class="stat-label">LLM Cost for Math</div></div>
+            <div class="stat animate-up animate-up-d1">
+                <div class="stat-value">84</div>
+                <div class="stat-label">Documents Indexed</div>
+            </div>
+            <div class="stat animate-up animate-up-d2">
+                <div class="stat-value">&lt;5ms</div>
+                <div class="stat-label">Calculation Latency</div>
+            </div>
+            <div class="stat animate-up animate-up-d3">
+                <div class="stat-value">6</div>
+                <div class="stat-label">MCP Tools</div>
+            </div>
+            <div class="stat animate-up animate-up-d4">
+                <div class="stat-value">$0</div>
+                <div class="stat-label">LLM Cost for Math</div>
+            </div>
         </div>
     </div>
 
+    <!-- Video Walkthrough -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <div class="section-label">Video Walkthrough</div>
+            <h2 class="section-title">See it in action. 2 minutes.</h2>
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); margin-top: 32px;">
+                <iframe src="https://www.loom.com/embed/dc6adb87028843338e175f466400c7a5?sid=auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem / Solution -->
     <section class="problem-section">
         <div class="container">
             <div class="section-label">The Problem</div>
             <h2 class="section-title">A client asks about their invoice.<br>An accountant spends an hour responding.</h2>
-            <p class="section-desc">airCFO serves 300+ venture-backed startups. Every invoice question means an accountant manually digging through files, cross-referencing line items, and drafting a reply. FinSense does it in seconds.</p>
+            <p class="section-desc">
+                airCFO serves 300+ venture-backed startups. Every invoice question means
+                an accountant manually digging through files, cross-referencing line items,
+                and drafting a reply. FinSense does it in seconds.
+            </p>
             <div class="comparison-grid">
                 <div class="comparison-card before">
                     <h3>Before FinSense</h3>
@@ -194,14 +476,20 @@
         </div>
     </section>
 
+    <!-- Live Demo -->
     <section class="demo-section" id="demo">
         <div class="container">
             <div class="section-label">Live Demo</div>
             <h2 class="section-title">Ask anything about the invoices.</h2>
-            <p class="section-desc">Connected to the live FinSense API. Three fictional startup clients with 6 months of invoices and financial statements. Real data, real calculations.</p>
+            <p class="section-desc">
+                Connected to the live FinSense API. Three fictional startup clients
+                with 6 months of invoices and financial statements. Real data, real calculations.
+            </p>
             <div class="demo-container">
                 <div class="demo-header">
-                    <span class="demo-dot r"></span><span class="demo-dot y"></span><span class="demo-dot g"></span>
+                    <span class="demo-dot r"></span>
+                    <span class="demo-dot y"></span>
+                    <span class="demo-dot g"></span>
                     <span class="demo-url">finsense-1.onrender.com/ask</span>
                 </div>
                 <div class="demo-body">
@@ -211,13 +499,15 @@
                         <button class="demo-query-btn" onclick="askQuery('What is GreenThread gross margin trend over the last 6 months?')">Margin Trend</button>
                         <button class="demo-query-btn" onclick="askQuery('Flag anything unusual in NovaByte March expenses')">Anomalies</button>
                         <button class="demo-query-btn" onclick="askQuery('Compare GreenThread Q1 vs Q2 revenue performance')">Q1 vs Q2</button>
-                        <button class="demo-query-btn" onclick="askQuery('Can you explain the charge on GreenThread February invoice?')">Invoice Q&amp;A</button>
+                        <button class="demo-query-btn" onclick="askQuery('Can you explain the charge on GreenThread February invoice?')">Invoice Q&A</button>
                     </div>
                     <div class="demo-input-row">
                         <input type="text" class="demo-input" id="queryInput" placeholder="Ask a question about invoices or financials..." onkeydown="if(event.key==='Enter')submitQuery()">
                         <button class="demo-submit" id="submitBtn" onclick="submitQuery()">Ask FinSense</button>
                     </div>
-                    <div class="demo-result" id="resultBox"><span style="color: var(--text-muted);">Click a query above or type your own question. Results appear here in real time.</span></div>
+                    <div class="demo-result" id="resultBox">
+                        <span style="color: var(--text-muted);">Click a query above or type your own question. Results appear here in real time.</span>
+                    </div>
                     <div class="demo-meta" id="metaBox" style="display:none;">
                         <span>Latency: <span class="fast" id="latencyVal"></span></span>
                         <span>Sources: <span id="sourcesVal"></span></span>
@@ -228,84 +518,164 @@
         </div>
     </section>
 
+    <!-- Tools -->
     <section class="tools-section" id="tools">
         <div class="container">
             <div class="section-label">MCP Tools</div>
             <h2 class="section-title">6 typed tools. Claude-callable.</h2>
-            <p class="section-desc">Every tool is exposed through the MCP server. External LLM agents can call into FinSense programmatically.</p>
+            <p class="section-desc">
+                Every tool is exposed through the MCP server. External LLM agents
+                can call into FinSense programmatically.
+            </p>
             <div class="tools-grid">
-                <div class="tool-card"><div class="tool-icon">&#128269;</div><h3>query_invoices</h3><p>RAG search over all ingested invoices. Returns the most relevant chunks with relevance scores and source citations.</p></div>
-                <div class="tool-card"><div class="tool-icon">&#128200;</div><h3>calculate_metrics</h3><p>Computes burn rate, runway, gross margin, and month-over-month growth. Pure math, zero LLM cost, zero hallucination.</p></div>
-                <div class="tool-card"><div class="tool-icon">&#128203;</div><h3>compare_periods</h3><p>Compares Q1 vs Q2 or any two time periods. Shows deltas and percentage changes for every expense category.</p></div>
-                <div class="tool-card"><div class="tool-icon">&#9888;&#65039;</div><h3>flag_anomalies</h3><p>Detects unusual month-over-month changes. Catches spikes, drops, and new expenses with severity scoring.</p></div>
-                <div class="tool-card"><div class="tool-icon">&#128196;</div><h3>generate_analysis</h3><p>Produces a CFO-level month-end analysis paragraph from financial data. Revenue, burn, margins, and recommendations.</p></div>
-                <div class="tool-card"><div class="tool-icon">&#9993;&#65039;</div><h3>draft_reply</h3><p>Drafts a professional client-facing email reply to an invoice question. A human reviews and sends.</p></div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#128269;</div>
+                    <h3>query_invoices</h3>
+                    <p>RAG search over all ingested invoices. Returns the most relevant chunks with relevance scores and source citations.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#128200;</div>
+                    <h3>calculate_metrics</h3>
+                    <p>Computes burn rate, runway, gross margin, and month-over-month growth. Pure math, zero LLM cost, zero hallucination.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#128203;</div>
+                    <h3>compare_periods</h3>
+                    <p>Compares Q1 vs Q2 or any two time periods. Shows deltas and percentage changes for every expense category.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#9888;&#65039;</div>
+                    <h3>flag_anomalies</h3>
+                    <p>Detects unusual month-over-month changes. Catches spikes, drops, and new expenses with severity scoring.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#128196;</div>
+                    <h3>generate_analysis</h3>
+                    <p>Produces a CFO-level month-end analysis paragraph from financial data. Revenue, burn, margins, and recommendations.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#9993;&#65039;</div>
+                    <h3>draft_reply</h3>
+                    <p>Drafts a professional client-facing email reply to an invoice question. A human reviews and sends.</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Architecture -->
     <section class="arch-section" id="architecture">
         <div class="container">
             <div class="section-label">Architecture</div>
             <h2 class="section-title">How it works under the hood.</h2>
-            <p class="section-desc">Multi-step agent routing, not one-size-fits-all. The agent classifies the question first, then picks the right pipeline.</p>
+            <p class="section-desc">
+                Multi-step agent routing, not one-size-fits-all. The agent classifies
+                the question first, then picks the right pipeline.
+            </p>
             <div class="arch-flow">
-                <div class="arch-node"><div class="arch-node-label">Input</div><div class="arch-node-value">Question</div></div>
+                <div class="arch-node">
+                    <div class="arch-node-label">Input</div>
+                    <div class="arch-node-value">Question</div>
+                </div>
                 <div class="arch-arrow">&rarr;</div>
-                <div class="arch-node"><div class="arch-node-label">Step 1</div><div class="arch-node-value">Parser</div></div>
+                <div class="arch-node">
+                    <div class="arch-node-label">Step 1</div>
+                    <div class="arch-node-value">Parser</div>
+                </div>
                 <div class="arch-arrow">&rarr;</div>
-                <div class="arch-node highlight"><div class="arch-node-label">Step 2</div><div class="arch-node-value">Router</div></div>
+                <div class="arch-node highlight">
+                    <div class="arch-node-label">Step 2</div>
+                    <div class="arch-node-value">Router</div>
+                </div>
                 <div class="arch-arrow">&rarr;</div>
-                <div class="arch-node"><div class="arch-node-label">Step 3</div><div class="arch-node-value">RAG + Tools</div></div>
+                <div class="arch-node">
+                    <div class="arch-node-label">Step 3</div>
+                    <div class="arch-node-value">RAG + Tools</div>
+                </div>
                 <div class="arch-arrow">&rarr;</div>
-                <div class="arch-node"><div class="arch-node-label">Step 4</div><div class="arch-node-value">LLM Synthesis</div></div>
+                <div class="arch-node">
+                    <div class="arch-node-label">Step 4</div>
+                    <div class="arch-node-value">LLM Synthesis</div>
+                </div>
                 <div class="arch-arrow">&rarr;</div>
-                <div class="arch-node highlight"><div class="arch-node-label">Output</div><div class="arch-node-value">Answer + Draft</div></div>
+                <div class="arch-node highlight">
+                    <div class="arch-node-label">Output</div>
+                    <div class="arch-node-value">Answer + Draft</div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Tech Stack -->
     <section class="stack-section">
         <div class="container">
             <div class="section-label">Tech Stack</div>
             <h2 class="section-title">Built with.</h2>
             <div class="stack-grid">
-                <span class="stack-tag">Python</span><span class="stack-tag">FastAPI</span><span class="stack-tag">FAISS</span>
-                <span class="stack-tag">sentence-transformers</span><span class="stack-tag">CrossEncoder</span>
-                <span class="stack-tag">Groq (Llama 3.3 70B)</span><span class="stack-tag">pdfplumber</span>
-                <span class="stack-tag">Docker</span><span class="stack-tag">MCP Protocol</span>
-                <span class="stack-tag">scikit-learn</span><span class="stack-tag">pandas</span><span class="stack-tag">Render</span>
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">FastAPI</span>
+                <span class="stack-tag">FAISS</span>
+                <span class="stack-tag">sentence-transformers</span>
+                <span class="stack-tag">CrossEncoder</span>
+                <span class="stack-tag">Groq (Llama 3.3 70B)</span>
+                <span class="stack-tag">pdfplumber</span>
+                <span class="stack-tag">Docker</span>
+                <span class="stack-tag">MCP Protocol</span>
+                <span class="stack-tag">scikit-learn</span>
+                <span class="stack-tag">pandas</span>
+                <span class="stack-tag">Render</span>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>Built by <a href="https://github.com/Parthjain171" target="_blank">Parth Jain</a> &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/parth-jain-a76746166/" target="_blank">LinkedIn</a> &nbsp;|&nbsp; <a href="https://github.com/Parthjain171/FinSense" target="_blank">GitHub Repo</a></p>
+            <p>
+                Built by <a href="https://github.com/Parthjain171" target="_blank">Parth Jain</a>
+                &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/parth-jain-a76746166/" target="_blank">LinkedIn</a>
+                &nbsp;|&nbsp; <a href="https://github.com/Parthjain171/FinSense" target="_blank">GitHub Repo</a>
+            </p>
         </div>
     </footer>
 
     <script>
         const API_BASE = 'https://finsense-1.onrender.com';
-        function askQuery(q) { document.getElementById('queryInput').value = q; submitQuery(); }
+
+        function askQuery(q) {
+            document.getElementById('queryInput').value = q;
+            submitQuery();
+        }
+
         async function submitQuery() {
             const input = document.getElementById('queryInput');
             const resultBox = document.getElementById('resultBox');
             const metaBox = document.getElementById('metaBox');
             const submitBtn = document.getElementById('submitBtn');
             const q = input.value.trim();
+
             if (!q) return;
+
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span class="spinner"></span> Thinking...';
             resultBox.innerHTML = '<span style="color: var(--text-muted); animation: pulse 1s infinite;">Querying FinSense API...</span>';
             metaBox.style.display = 'none';
+
             const startTime = performance.now();
+
             try {
-                const res = await fetch(`${API_BASE}/ask`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ question: q }) });
+                const res = await fetch(`${API_BASE}/ask`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: q }),
+                });
+
                 const data = await res.json();
                 const elapsed = performance.now() - startTime;
+
                 let html = '';
                 const answer = data.answer || 'No answer returned.';
+
+                // Format the answer nicely
                 const lines = answer.split('\n');
                 for (const line of lines) {
                     if (line.includes(':') && !line.startsWith('[') && !line.startsWith('Raw')) {
@@ -314,20 +684,30 @@
                         const value = parts.slice(1).join(':');
                         if (value.trim() && (value.includes('$') || value.includes('%') || value.includes('month'))) {
                             html += `<span class="label">${label}:</span><span class="value">${value}</span>\n`;
-                        } else { html += line + '\n'; }
-                    } else { html += line + '\n'; }
+                        } else {
+                            html += line + '\n';
+                        }
+                    } else {
+                        html += line + '\n';
+                    }
                 }
+
                 if (data.draft_reply && !data.draft_reply.includes('[LLM not connected')) {
                     html += '\n\n<span class="label">Draft Reply:</span>\n' + data.draft_reply;
                 }
+
                 resultBox.innerHTML = html;
+
+                // Show meta
                 metaBox.style.display = 'flex';
                 document.getElementById('latencyVal').textContent = `${elapsed.toFixed(0)}ms (network) / ${data.latency_ms || 0}ms (server)`;
                 document.getElementById('sourcesVal').textContent = (data.sources || []).join(', ') || 'N/A';
                 document.getElementById('reasoningVal').textContent = (data.reasoning || []).slice(-2).join(' > ') || 'N/A';
+
             } catch (err) {
                 resultBox.innerHTML = `<span style="color: var(--red);">Error: ${err.message}\n\nThe free tier server may be waking up. Wait 30 seconds and try again.</span>`;
             }
+
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'Ask FinSense';
         }
