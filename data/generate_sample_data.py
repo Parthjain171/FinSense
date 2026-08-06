@@ -106,9 +106,9 @@ def generate_invoice_pdf(client_key, client, year, month, month_name, invoice_nu
     story = []
 
     # Header
-    story.append(Paragraph("airCFO", title_style))
-    story.append(Paragraph("Full-Stack Back-Office Solutions for Startups", header_style))
-    story.append(Paragraph("Cleveland, OH | hello@aircfo.com | aircfo.com", header_style))
+    story.append(Paragraph("FinSense", title_style))
+    story.append(Spacer(1, 4))
+    story.append(Paragraph("Cleveland, OH | hello@finsense.com | finsense.com", header_style))
     story.append(Spacer(1, 20))
     story.append(HRFlowable(width="100%", thickness=1, color=colors.grey))
     story.append(Spacer(1, 15))
@@ -433,7 +433,7 @@ def generate_sample_questions():
         },
         {
             "id": "q13",
-            "question": "What was PulseMetrics total spend with airCFO in Q1 2026?",
+            "question": "What was PulseMetrics total spend with FinSense in Q1 2026?",
             "expected_client": "PulseMetrics",
             "type": "total_spend"
         },

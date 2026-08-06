@@ -3,11 +3,11 @@ Prompt templates for the invoice agent.
 
 Each template takes retrieved context and structured data,
 then asks the LLM to synthesize a professional response.
-Written the way an experienced airCFO accountant would talk
+Written the way an experienced accountant would talk
 to a startup founder: direct, clear, no jargon overload.
 """
 
-SYSTEM_PROMPT = """You are an AI assistant working inside airCFO, a financial services partner for venture-backed startups. You help airCFO accountants draft responses to client questions about invoices and financials.
+SYSTEM_PROMPT = """You are an AI financial document assistant for startup finance teams. You help accountants draft responses to client questions about invoices and financials.
 
 Rules:
 - Be direct and professional. No filler phrases.
@@ -69,7 +69,7 @@ Write a 150-200 word analysis that covers:
 7. One forward-looking recommendation"""
 
 
-DRAFT_REPLY_PROMPT = """Draft a professional email reply from an airCFO team member to a client. This reply will be reviewed by a human before sending.
+DRAFT_REPLY_PROMPT = """Draft a professional email reply from a finance team member to a client. This reply will be reviewed by a human before sending.
 
 Client Question: {question}
 Client Name: {contact_name}
@@ -85,7 +85,7 @@ Write the email reply. Include:
 - A direct answer to their question with specific numbers
 - Any relevant context (add-on services, scope changes, etc.)
 - A closing that offers further help
-- Sign off as "[airCFO Team Member]" (the human reviewer adds their name)"""
+- Sign off as "[Finance Team Member]" (the human reviewer adds their name)"""
 
 
 ANOMALY_EXPLANATION_PROMPT = """Explain the following financial anomalies to a startup founder. Be specific about what happened and suggest what to investigate.

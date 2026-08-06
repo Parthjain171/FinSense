@@ -2,7 +2,7 @@
 FinSense API Server.
 
 REST endpoints for invoice Q&A, financial analysis,
-and all the tools an airCFO accountant needs.
+and all the tools a finance team needs.
 
 Start with: uvicorn app.main:app --reload
 """
@@ -25,7 +25,7 @@ app = FastAPI(
         "AI-powered invoice and financial document agent. "
         "Answers natural language questions about invoices, "
         "computes financial metrics, flags anomalies, and "
-        "drafts professional client replies. Built for airCFO."
+        "drafts professional client replies for startup finance teams."
     ),
     version="1.0.0",
 )
@@ -87,7 +87,7 @@ async def root():
     return {
         "service": "FinSense",
         "version": "1.0.0",
-        "description": "AI invoice and financial document agent for airCFO",
+        "description": "AI invoice and financial document agent for startup finance teams",
         "endpoints": {
             "/ask": "POST - Ask any question about invoices or financials",
             "/search": "POST - Raw document search",
@@ -103,7 +103,7 @@ async def api_info():
     return {
         "service": "FinSense",
         "version": "1.0.0",
-        "description": "AI invoice and financial document agent for airCFO",
+        "description": "AI invoice and financial document agent for startup finance teams",
         "endpoints": {
             "/ask": "POST - Ask any question about invoices or financials",
             "/search": "POST - Raw document search",
@@ -111,6 +111,7 @@ async def api_info():
             "/tools": "GET - List available MCP tools",
         },
     }
+
 
 
 @app.get("/health")

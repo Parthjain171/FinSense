@@ -102,8 +102,7 @@ class OpenAIProvider(LLMProvider):
 
 class AnthropicProvider(LLMProvider):
     """
-    Anthropic Claude.
-    airCFO uses Claude internally. This is the production choice.
+    Anthropic Claude provider.
     """
 
     def __init__(self, api_key: Optional[str] = None, model: str = "claude-sonnet-4-20250514"):

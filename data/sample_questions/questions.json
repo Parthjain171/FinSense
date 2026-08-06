@@ -88,7 +88,7 @@
   },
   {
     "id": "q13",
-    "question": "What was PulseMetrics total spend with airCFO in Q1 2026?",
+    "question": "What was PulseMetrics total spend with FinSense in Q1 2026?",
     "expected_client": "PulseMetrics",
     "type": "total_spend"
   },

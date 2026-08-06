@@ -1,9 +1,8 @@
 """
 Invoice Question Agent.
 
-This is the core of what airCFO's HN post described:
-"An agent that reads an inbound invoice question, pulls
-the correct invoice, and drafts a context-aware reply."
+An agent that reads an inbound invoice question, pulls
+the correct invoice, and drafts a context-aware reply.
 
 It does not just retrieve and summarize. It follows the
 same reasoning steps an experienced accountant would:
