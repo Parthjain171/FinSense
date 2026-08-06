@@ -166,7 +166,7 @@ class InvoiceAgent:
 
     def _classify_question(self, text: str) -> str:
         """Classify the question type to route to the right handler."""
-        if any(w in text for w in ["explain", "break down", "breakdown", "line items", "charge", "what is the"]):
+        if any(w in text for w in ["explain", "break down", "breakdown", "line items", "charge", "what is the", "find", "search", "invoice"]):
             if any(w in text for w in ["higher", "lower", "more than", "less than", "vs", "compared"]):
                 return "invoice_comparison"
             return "invoice_explanation"

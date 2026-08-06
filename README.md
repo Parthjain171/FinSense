@@ -1,24 +1,22 @@
 # FinSense
 
-**AI-powered invoice and financial document agent.**
-
-Built as a working prototype for the founding engineer role at [airCFO](https://aircfo.com). This solves the exact problem described in the HN post: an agent that reads an inbound invoice question, pulls the correct invoice, and drafts a context-aware reply a teammate can review and send. Takes seconds instead of an hour.
+AI-powered financial document assistant for startup finance teams. Helps teams answer invoice questions, track burn rate, detect expense anomalies, and generate month-end analysis. Humans stay in control: AI handles retrieval and computation, your team makes decisions. All data stays on your infrastructure.
 
 ## Screenshots
 
-**Health check — 84 documents indexed and ready**
+**Health check: 84 documents indexed and ready**
 
 ![Health endpoint](docs/screenshots/health.png)
 
-**Swagger UI — all endpoints, fully interactive**
+**Swagger UI: all endpoints, fully interactive**
 
 ![Swagger UI](docs/screenshots/swagger_ui.png)
 
-**`/ask` — NovaByte burn rate Q1 vs Q2 (pure math, no LLM)**
+**`/ask`: NovaByte burn rate Q1 vs Q2 (pure math, no LLM)**
 
 ![Burn rate query](docs/screenshots/ask_burnrate.png)
 
-**`/ask` — PulseMetrics runway at current burn**
+**`/ask`: PulseMetrics runway at current burn**
 
 ![Runway query](docs/screenshots/ask_runway.png)
 
@@ -26,7 +24,7 @@ Built as a working prototype for the founding engineer role at [airCFO](https://
 
 **Invoice Q&A** - Ask any natural language question about a client's invoice. The agent retrieves the right document, cross-references line items, and gives you a direct answer with cited sources.
 
-**Month-End Analysis** - Feed it a P&L statement and it generates a CFO-level summary paragraph. Revenue, burn, margin, top expenses, anomalies, and runway. The same analysis airCFO's "Mean Machine" produces, powered by RAG and structured financial tools.
+**Month-End Analysis** - Feed it a P&L statement and it generates a CFO-level summary paragraph. Revenue, burn, margin, top expenses, anomalies, and runway. The same analysis finance teams produce, powered by RAG and structured financial tools.
 
 **Anomaly Detection** - Automatically flags unusual month-over-month changes in expense categories. Catches spikes, drops, and new line items that would otherwise take manual review to spot.
 
@@ -63,7 +61,7 @@ Question
 
 ## Why these technical decisions
 
-**FAISS over Pinecone or Qdrant.** airCFO handles financial data for 300+ venture-backed startups. Client invoices, P&L statements, and cash flow data are sensitive. FAISS runs entirely local with zero external API calls. No data leaves the server. For an accounting firm, this is not a nice-to-have. It is a compliance requirement.
+**FAISS over Pinecone or Qdrant.** Finance teams handle sensitive financial data for venture-backed startups. Client invoices, P&L statements, and cash flow data are sensitive. FAISS runs entirely local with zero external API calls. No data leaves the server. For an accounting firm or finance team, this is not a nice-to-have. It is a compliance requirement.
 
 **Cross-encoder reranking.** When you have 300+ clients with similar monthly invoices, vanilla cosine similarity returns too many near-matches from the wrong client or the wrong month. The cross-encoder reranker scores each candidate against the actual query and pushes the correct document to the top. This is the difference between "found an invoice" and "found the right invoice."
 
@@ -72,6 +70,28 @@ Question
 **Deterministic tools over LLM calls for math.** Burn rate, runway, margin, and anomaly detection are pure math. The agent calculates them directly from the structured data instead of asking an LLM to do arithmetic. This is faster, cheaper, and never hallucinates a number.
 
 **Multi-step agent routing.** The agent does not treat every question the same way. "Explain the charge" triggers a single-invoice retrieval. "Why is this month higher" triggers a multi-invoice comparison. "Flag anomalies" triggers the financial tools. The router classifies the question first, then picks the right pipeline. This is how an experienced accountant thinks.
+
+## Key Principles
+
+- Data never leaves your infrastructure: FAISS runs local
+- Math is never wrong: deterministic tools, no LLM arithmetic
+- Right tool for right question: router sends burn rate to calculators, not to RAG
+- Human stays in control: AI retrieves and computes, team reviews and decides
+- Pluggable: MCP server lets any LLM agent call these tools
+
+## Known Limitations & Planned Improvements
+
+- Ambiguous client references fail: "the startup" instead of "NovaByte" breaks retrieval
+- Cross-client comparisons not supported yet
+- Hallucinates when data isn't in the index: needs confidence threshold + "I don't know" fallback
+- Chunking quality degrades on PDFs longer than 20 pages
+- No streaming responses yet
+
+Planned fixes:
+- Client disambiguation step before retrieval
+- Confidence-based fallback using retrieval scores
+- Sliding window chunking for long documents
+
 
 ## MCP Tools
 
@@ -171,7 +191,7 @@ FinSense/
 
 ## Sample data
 
-Three fictional startup clients that mirror airCFO's real client base:
+Three fictional startup clients:
 
 **NovaByte Inc.** (Seed, SaaS) - $5K/month base, with add-ons for tax prep and financial modeling in specific months.
 
@@ -193,16 +213,7 @@ Each client has 6 months of invoices, P&L statements, balance sheets, and cash f
 - **pandas** - financial data processing
 - **Docker** - containerized deployment
 
-## What this demonstrates
-
-This is not a tutorial project or a wrapper around an API. It is a production-architecture prototype that shows:
-
-1. **Domain understanding** - financial-aware chunking, accountant-style reasoning, realistic sample data
-2. **RAG depth** - FAISS indexing, cross-encoder reranking, metadata-enriched retrieval
-3. **Agent design** - multi-step routing, deterministic tools for math, LLM-free where possible
-4. **Platform thinking** - MCP tools, REST API, Docker deployment, modular codebase
-5. **Shipping mentality** - working end-to-end, not a collection of notebooks
-
 ---
 
 Built by [Parth Jain](https://github.com/Parthjain171) | [LinkedIn](https://www.linkedin.com/in/parth-jain-a76746166/)
+
